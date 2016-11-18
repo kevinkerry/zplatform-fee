@@ -71,9 +71,9 @@
 			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
 		<dependency>
-		    <groupId>com.alibaba</groupId>
-		    <artifactId>druid</artifactId>
-		    <version>1.0.26</version>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>1.0.26</version>
 		</dependency>
 
 	</dependencies>
@@ -84,11 +84,11 @@
 				<directory>src/main/resources</directory>
 				<filtering>true</filtering>
 				<excludes>
-                    <exclude>test/*</exclude>
-                    <exclude>prod/*</exclude>
-                    <exclude>dev/*</exclude>
-                    <exclude>spring/*</exclude>
-                </excludes>				
+					<exclude>test/*</exclude>
+					<exclude>prod/*</exclude>
+					<exclude>dev/*</exclude>
+					<exclude>spring/*</exclude>
+				</excludes>
 			</resource>
 			<resource>
 				<targetPath>${project.build.directory}/classes</targetPath>
@@ -100,46 +100,46 @@
 				</includes>
 				<excludes>
 					<exclude>test/*</exclude>
-                    <exclude>prod/*</exclude>
-                    <exclude>dev/*</exclude>
-                    <exclude>spring/*</exclude>
+					<exclude>prod/*</exclude>
+					<exclude>dev/*</exclude>
+					<exclude>spring/*</exclude>
 				</excludes>
 			</resource>
-			<resource>
+			<!-- <resource>
 				<targetPath>${project.build.directory}/classes/META-INF/spring</targetPath>
 				<directory>src/main/resources/spring</directory>
 				<filtering>true</filtering>
 				<includes>
 					<include>spring-context.xml</include>
 				</includes>
-			</resource>
+			</resource> -->
 		</resources>
 		<plugins>
-		<plugin>
-			<groupId>org.eclipse.m2e</groupId>
-			<artifactId>lifecycle-mapping</artifactId>
-			<version>1.0.0</version>
-			<configuration>
-				<lifecycleMappingMetadata>
-					<pluginExecutions>
-						<pluginExecution>
-							<pluginExecutionFilter>
-								<groupId>org.apache.maven.plugins</groupId>
-								<artifactId>maven-dependency-plugin</artifactId>
-								<versionRange>[2.0,)</versionRange>
-								<goals>
-									<goal>copy-dependencies</goal>
-								</goals>
-							</pluginExecutionFilter>
-							<action>
-								<ignore />
-							</action>
-						</pluginExecution>
-					</pluginExecutions>
-				</lifecycleMappingMetadata>
-			</configuration>
-		</plugin>
-		<plugin>
+			<plugin>
+				<groupId>org.eclipse.m2e</groupId>
+				<artifactId>lifecycle-mapping</artifactId>
+				<version>1.0.0</version>
+				<configuration>
+					<lifecycleMappingMetadata>
+						<pluginExecutions>
+							<pluginExecution>
+								<pluginExecutionFilter>
+									<groupId>org.apache.maven.plugins</groupId>
+									<artifactId>maven-dependency-plugin</artifactId>
+									<versionRange>[2.0,)</versionRange>
+									<goals>
+										<goal>copy-dependencies</goal>
+									</goals>
+								</pluginExecutionFilter>
+								<action>
+									<ignore />
+								</action>
+							</pluginExecution>
+						</pluginExecutions>
+					</lifecycleMappingMetadata>
+				</configuration>
+			</plugin>
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
 				<version>2.6</version>
@@ -148,11 +148,11 @@
 					<archive>
 						<manifest>
 							<mainClass>com.alibaba.dubbo.container.Main</mainClass>
-							<!-- 打包时  MANIFEST.MF文件不记录的时间戳版本  -->
+							<!-- 打包时 MANIFEST.MF文件不记录的时间戳版本 -->
 							<useUniqueVersions>false</useUniqueVersions>
 							<addClasspath>true</addClasspath>
 							<classpathPrefix>lib/</classpathPrefix>
-							
+
 						</manifest>
 						<manifestEntries>
 							<Class-Path>.</Class-Path>
@@ -181,7 +181,7 @@
 					</execution>
 				</executions>
 			</plugin>
-		
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -197,12 +197,12 @@
 					<skipTests>${skipTests}</skipTests>
 				</configuration>
 			</plugin>
-      		<plugin>
+			<plugin>
 				<artifactId>maven-resources-plugin</artifactId>
 				<executions>
 					<execution>
 						<id>copy-resources</id>
-						
+
 						<phase>validate</phase>
 						<goals>
 							<goal>copy-resources</goal>
@@ -219,29 +219,16 @@
 					</execution>
 				</executions>
 			</plugin>
-			 <plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>copy-dependencies</id>
-						<phase>test</phase>
-						<goals>
-							<goal>copy-dependencies</goal>
-						</goals>
-						<configuration>
-							<outputDirectory>
-								target/classes/lib
-							</outputDirectory>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			
+			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-dependency-plugin</artifactId> 
+				<executions> <execution> <id>copy-dependencies</id> <phase>test</phase> <goals> 
+				<goal>copy-dependencies</goal> </goals> <configuration> <outputDirectory> 
+				target/classes/lib </outputDirectory> </configuration> </execution> </executions> 
+				</plugin> -->
+
 		</plugins>
 	</build>
 	<profiles>
-		 <profile>
+		<profile>
 			<id>dev</id>
 			<activation>
 				<activeByDefault>true</activeByDefault>
@@ -249,7 +236,7 @@
 			<properties>
 				<package.environment>dev</package.environment>
 			</properties>
-		</profile> 
+		</profile>
 		<profile>
 			<id>test</id>
 			<properties>
